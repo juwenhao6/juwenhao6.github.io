@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+ <html lang="zh-CN">
+ <head>
+     <meta charset="UTF-8">
+     <title>个人简介-秋收</title>
+     <link rel="stylesheet" href=>
+     <style>
+         table {
+             border-collapse: collapse;
+             width: 80%;
+             margin: 20px auto;
+         }
+         th, td {
+             border: 1px solid #000;
+             padding: 10px;
+             text-align: left;
+         }
+         th {
+             background-color: #f2f2f2;
+         }
+         .icon {
+             margin-right: 5px;
+         }
+     </style>
+ </head>
+ <body>
+     <h1>个人简介-秋收</h1>
+     <table>
+         <caption>个人基本信息</caption>
+         <tr>
+             <<th>姓名</</th>
+             <td>秋收</td>
+             <<th rowspan="3">照片</</th>
+             <td rowspan="3"><img src="c:\Users\asus\Downloads\qq_pic_merged_1760866815062.jpg" alt="个人照片" style="width:150px;height:200px;"></td>
+         </tr>
+         <tr>
+             <<th>学号</</th>
+             <td>20252200084
+         </tr>
+         <tr>
+             <<th>专业</</th>
+             <td>计算机科学与技术（智能机器人方向）
+         </tr>
+         <tr>
+             <<th>项目经历</</th>
+             <td colspan="3">2025年软件杯大赛本科组-智能校园导航系统设计与实现<br>
+                 该项目旨在开发一款基于AI的校园导航APP，实现室内外一体化导航、智能推荐等功能。我主要负责前端界面开发和部分算法优化，通过使用Vue框架搭建了交互友好的界面，同时对路径规划算法进行了改进，提升了导航效率。</td>
+         </tr>
+         <tr>
+             <<th>技能证书</</th>
+             <td colspan="3">
+                 <ol>
+                     <li><<i class="fas fa-code icon"></</i> 会做简单web
+                     <li><<i class="fas fa-database icon"></</i> 会简单运用c语言
+                     <li><<i class="fas fa-certificate icon"></</i> 计算机二级证书</li>
+                 </ol>
+             </td>
+         </tr>
+         <tr>
+             <<th>兴趣爱好</</th>
+             <td colspan="3">
+                 <ol>
+                     <li><<i class="fas fa-book icon"></</i>玩游戏i>
+                     <li><<i class="fas fa-gamepad icon"></</i> 睡觉li>
+                     <li><<i class="fas fa-music icon"></</i> 看抖音i>
+                 </ol>
+             </td>
+         </tr>
+         <tr>
+             <<th>自我评价</</th>
+             <td colspan="3">我是一个对计算机领域充满热情的学习者，在专业知识学习上始终保持积极进取的态度，对HTML、CSS、JavaScript等前端技术有着扎实的基础，同时也在不断探索后端开发和人工智能领域的知识。在项目实践中，我具备良好的团队协作能力，能够与小组成员高效沟通，共同解决开发过程中遇到的问题。在2025年软件杯大赛的项目中，我充分发挥了自己的技术优势，在前端界面设计和算法优化方面贡献了重要力量，也从中学到了很多项目管理和技术攻坚的经验。我始终相信，持续学习和不断实践是提升自身能力的关键，未来我将继续深耕计算机领域，不断提升自己的技术水平和综合素养，努力成为一名优秀的计算机专业人才。</td>
+         </tr>
+     </table>
+ <!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+ </html>
