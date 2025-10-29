@@ -1,113 +1,119 @@
 <!DOCTYPE html>
- <html lang="zh-CN">
- <head>
-     <meta charset="UTF-8">
-     <title>个人简介-秋收</title>
-     <link rel="stylesheet" href="">
-     <style>
-         table {
-             border-collapse: collapse;
-             width: 80%;
-             margin: 20px auto;
-         }
-         th, td {
-             border: 1px solid #000;
-             padding: 10px;
-             text-align: left;
-         }
-         th {
-             background-color: #f2f2f2;
-         }
-         .icon {
-             margin-right: 5px;
-         }
-     </style>
- </head>
- <body>
-     <h1>个人简介-秋收</h1>
-     <table>
-         <caption>个人基本信息</caption>
-         <tr>
-             <<th>姓名</</th>
-             <td>鞠文浩</td>
-             <<th rowspan="3">照片</</th>
-             <td rowspan="3"><img src="juwenhao.jpg" alt="个人照片" style="width:150px;height:200px;"></td>
-         </tr>
-         <tr>
-             <<th>学号</</th>
-             <td>20252200084
-         </tr>
-         <tr>
-             <<th>专业</</th>
-             <td>计算机科学与技术（智能机器人方向）
-         </tr>
-         <tr>
-             <<th>项目经历</</th>
-             <td colspan="3">2025年软件杯大赛本科组-智能校园导航系统设计与实现<br>
-                 该项目旨在开发一款基于AI的校园导航APP，实现室内外一体化导航、智能推荐等功能。我主要负责前端界面开发和部分算法优化，通过使用Vue框架搭建了交互友好的界面，同时对路径规划算法进行了改进，提升了导航效率。</td>
-         </tr>
-         <tr>
-             <<th>技能证书</</th>
-             <td colspan="3">
-                 <ol>
-                     <li><<i class="fas fa-code icon"></</i> 会做简单web
-                     <li><<i class="fas fa-database icon"></</i> 会简单运用c语言
-                     <li><<i class="fas fa-certificate icon"></</i> 计算机二级证书</li>
-                 </ol>
-             </td>
-         </tr>
-         <tr>
-             <<th>兴趣爱好</</th>
-             <td colspan="3">
-                 <ol>
-                     <li><<i class="fas fa-book icon"></</i>玩游戏i>
-                     <li><<i class="fas fa-gamepad icon"></</i> 睡觉li>
-                     <li><<i class="fas fa-music icon"></</i> 看抖音i>
-                 </ol>
-             </td>
-         </tr>
-         <tr>
-             <<th>自我评价</</th>
-             <td colspan="3">我是一个对计算机领域充满热情的学习者，在专业知识学习上始终保持积极进取的态度，对HTML、CSS、JavaScript等前端技术有着扎实的基础，同时也在不断探索后端开发和人工智能领域的知识。在项目实践中，我具备良好的团队协作能力，能够与小组成员高效沟通，共同解决开发过程中遇到的问题。在2025年软件杯大赛的项目中，我充分发挥了自己的技术优势，在前端界面设计和算法优化方面贡献了重要力量，也从中学到了很多项目管理和技术攻坚的经验。我始终相信，持续学习和不断实践是提升自身能力的关键，未来我将继续深耕计算机领域，不断提升自己的技术水平和综合素养，努力成为一名优秀的计算机专业人才。</td>
-         </tr>
-     </table>
- <!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书促销活动</title>
+</head>
+<style>
+.father{
+    height: 700px;
+    background-color: antiquewhite;
+    width: 1200px;
+    
+}
+.left{
+    height: 700px;
+    width: 250px;
+    background-color: burlywood;
+    font-size: 20px;
+    float: left;
+   
+    
+}
+.line{
+    line-height:3.5 ;
+    top: 0;
+    
+    margin-top: -90px;
+}
+.right{
+    background-color: rgb(232, 237, 236);
+    height: 700px;
+    float: right;
+    width: 300px;
+}
+
+.test{
+    padding-left:30px ;
+    color: red;
+}
+.th{
+    font-size: 30px;
+}
+.th1{
+    font-size: 30px;
+    padding-left: 30px;
+    color: rgb(8, 103, 103);
+}
+.img1{
+    height: 100px;
+}
+
+
+.ll{position: absolute;
+    left: 257px;
+    background-color: b;
+    width: 650px;
+    height: 250px;
+}
+
+</style>
+<body>
+    <div class="father">
+        <img src="https://ts2.tc.mm.bing.net/th/id/OIP-C.PLWFjrlk-7LBBVCAYd6eWgHaHL?rs=1&pid=ImgDetMain&o=7&rm=3"width=650 height="450">
+
+        <div class="ll">
+            <img src="https://cn.bing.com/images/search?view=detailV2&ccid=jHqaI7%2bb&id=72F75F1B161270679321743D64CEA61021354897&thid=OIP.jHqaI7-bnaWfPb3G1_LBWAHaHa&mediaurl=https%3a%2f%2fimg5.xinhuashudian.com%2fimages%2f2019%2f11%2f08%2fa810a4c1-23e0-416e-9c32-8af1cfee1674.jpg%3fx-oss-process%3dimage%2fresize%2cm_mfit%2ch_750%2cw_750&exph=750&expw=750&q=%e5%a2%a8%e8%8f%b2%e5%ae%9a%e5%be%8b&FORM=IRPRST&ck=453D12D8B057AAF478C18DE40E9E6942&selectedIndex=0&itb=0"
+            width="650px" height="250px" alt="图书促销样例">
+        </div>
+        <div class="left" font-size="100px">
+            <img class="img1">
+<ul class="line">
+    <li><input placeholder="搜索想要的书"></li>
+    <li><a href="#">儿童刊物</a></li>
+    <li><a href="#">网络文学</a></li>
+    <li><a href="#">手机、数码、家庭办公</a></li>
+<li><a href="#">母婴玩具</a></li>
+<li><a href="#">食品、茶酒</a></li>
+<li><a href="#">美妆、个人护理、清洁</a></li>
+<li><a href="#">家用电器</a></li>
+<li><a href="#">汽车、配件、用品</a></li>
+<li><a href="#">礼品卡、生活服务</a></li>
+
+
+</ul>
+
+
+
+
+
+
+
+
+        </div>
+        <div class="right">
+<img src="https://ts1.tc.mm.bing.net/th/id/OIP-C.XOiIclgLLHFyw88NZzq29QHaLH?w=151&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2"width=300>
+        <h2 class="test"><b>国庆大促，全场五折!</h2></b>
+        <table>
+            <th class="th">信息公告</th>  <th class="th1"
+                
+           >服务公告</th>
+        
+        </table>
+        <ul>
+<li>国庆大放价，全场五折</li>
+<Li>特价书9.9元包邮</Li>
+
+
+        </ul>
+
+        
+
+</div>
+
+    </div>
+    
+    
 </body>
- </html>
+</html>
