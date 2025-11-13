@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数字展销平台首页</title>
+    <title>数字图书展销平台首页</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        
         * {
             margin: 0;
             padding: 0;
@@ -83,7 +82,6 @@
             width: 100%;
         }
 
-       
         .dropdown {
             position: relative;
         }
@@ -140,15 +138,17 @@
             box-shadow: 0 0 0 2px #f1c40f;
         }
 
-        .cart-icon {
+        .cart-icon, .login-link {
             color: white;
             font-size: 20px;
             position: relative;
             cursor: pointer;
             transition: transform 0.3s ease;
+            text-decoration: none;
+            margin-left: 15px;
         }
 
-        .cart-icon:hover {
+        .cart-icon:hover, .login-link:hover {
             transform: scale(1.1);
         }
 
@@ -215,7 +215,7 @@
             margin-right: 8px;
             width: 20px;
             text-align: center;
-            font-size: 18px; 
+            font-size: 18px;
         }
 
         .line a:hover {
@@ -338,7 +338,6 @@
             gap: 15px;
         }
 
-       
         .book-item {
             position: relative;
             flex: 1;
@@ -355,7 +354,6 @@
             transition: all 0.3s ease;
         }
 
-       
         .book-overlay {
             position: absolute;
             top: 0;
@@ -372,7 +370,6 @@
             padding: 10px;
         }
 
-       
         .book-item:hover .book-overlay {
             opacity: 1;
         }
@@ -418,6 +415,130 @@
             background-color: #c0392b;
             transform: scale(1.05);
         }
+
+       
+        .form-section {
+            margin-top: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-title {
+            font-size: 22px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 10px;
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 5px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #e74c3c;
+            box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        .radio-group, .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        button[type="reset"] {
+            background-color: #95a5a6;
+        }
+
+        button[type="reset"]:hover {
+            background-color: #7f8c8d;
+        }
+
+      
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -433,7 +554,6 @@
                 <li><a href="#"><i class="fa fa-gift"></i> 促销活动</a></li>
                 <li><a href="#"><i class="fa fa-newspaper-o"></i> 新品上架</a></li>
                 <li><a href="#"><i class="fa fa-comments"></i> 用户评价</a></li>
-               
                 <li class="dropdown">
                     <a href="#"><i class="fa fa-filter"></i> 分类浏览</a>
                     <div class="dropdown-menu">
@@ -451,9 +571,38 @@
                     <i class="fa fa-shopping-cart"></i>
                     <span class="cart-count">3</span>
                 </div>
+                <a href="#" class="login-link" id="loginBtn">
+                    <i class="fa fa-user"></i> 登录/注册
+                </a>
             </div>
         </div>
     </nav>
+
+    
+    <div class="login-modal" id="loginModal">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <div class="login-content">
+            <h2 class="form-title">用户登录</h2>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="username">用户名/邮箱</label>
+                    <input type="email" id="username" name="username" placeholder="请输入用户名或邮箱" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" id="password" name="password" placeholder="请输入密码" required>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">记住我</label>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit">登录</button>
+                    <button type="button">注册</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <div class="father">
         <div class="left">
@@ -462,7 +611,6 @@
                 <li><a href="#"><i class="fa fa-child"></i> 儿童刊物</a></li>
                 <li><a href="#"><i class="fa fa-book"></i> 网络文学</a></li>
                 <li><a href="#"><i class="fa fa-laptop"></i> 数码科技</a></li>
-               
                 <li><a href="#"><i class="fa fa-child"></i> 母婴玩具</a></li>
                 <li><a href="#"><i class="fa fa-cutlery"></i> 食品茶酒</a></li>
                 <li><a href="#"><i class="fa fa-heart"></i> 美妆个护</a></li>
@@ -484,7 +632,6 @@
                         <span>儿童读物</span>
                     </div>
                     <div class="book-display">
-                       
                         <div class="book-item">
                             <img src="https://ts1.tc.mm.bing.net/th/id/OIP-C.l7ZFfwbSWUMuOlPw8PylHgAAAA?w=164&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2">
                             <div class="book-overlay">
@@ -497,8 +644,6 @@
                                 </div>
                             </div>
                         </div>
-                        
-                       
                         <div class="book-item">
                             <img src="https://ts1.tc.mm.bing.net/th/id/OIP-C.6GhEf1ZUlz9RBWxpKMp8dwHaNK?w=160&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2">
                             <div class="book-overlay">
@@ -511,8 +656,6 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
                         <div class="book-item">
                             <img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.s8zlcHeDdVL-W8t7aiwYTwHaHa?w=188&h=188&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3">
                             <div class="book-overlay">
@@ -525,8 +668,6 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
                         <div class="book-item">
                             <img src="https://tse4-mm.cn.bing.net/th/id/OIP-C.OtnIfZ9xp_kAT5Ij5uxIqAHaKr?w=158&h=220&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3">
                             <div class="book-overlay">
@@ -540,6 +681,80 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="form-title">图书推荐订阅</h2>
+                    <form action="#" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="name">用户名</label>
+                            <input type="text" id="name" name="name" placeholder="请输入用户名" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" id="email" name="email" placeholder="请输入邮箱" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">密码</label>
+                            <input type="password" id="password" name="password" placeholder="请设置密码" required>
+                        </div>
+                        <div class="form-group">
+                            <label>性别</label>
+                            <div class="radio-group">
+                                <input type="radio" id="male" name="gender" value="male" checked>
+                                <label for="male">男</label>
+                                <input type="radio" id="female" name="gender" value="female">
+                                <label for="female">女</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>兴趣领域</label>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="literature" name="interest" value="literature">
+                                <label for="literature">文学</label>
+                                <input type="checkbox" id="science" name="interest" value="science">
+                                <label for="science">科技</label>
+                                <input type="checkbox" id="history" name="interest" value="history">
+                                <label for="history">历史</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">所在城市</label>
+                            <select id="city" name="city" required>
+                                <option value="">请选择城市</option>
+                                <option value="beijing">北京</option>
+                                <option value="shanghai">上海</option>
+                                <option value="guangzhou">广州</option>
+                                <option value="shenzhen">深圳</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookType">图书分类偏好</label>
+                            <select id="bookType" name="bookType" multiple required>
+                                <option value="novel">小说</option>
+                                <option value="science">科普</option>
+                                <option value="history">历史</option>
+                                <option value="biography">传记</option>
+                                <option value="children">儿童</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">订阅说明</label>
+                            <textarea id="comment" name="comment" placeholder="请输入订阅需求"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="avatar">上传头像</label>
+                            <input type="file" id="avatar" name="avatar" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                            <label for="birthdate">出生日期</label>
+                            <input type="date" id="birthdate" name="birthdate">
+                        </div>
+                        <div class="form-buttons">
+                            <button type="submit">提交订阅</button>
+                            <button type="reset">重置</button>
+                        </div>
+                    </form>
                 </div>
             </div>
 
@@ -560,5 +775,26 @@
             </div>
         </div>
     </div>
+
+    <script>
+       
+        const loginBtn = document.getElementById('loginBtn');
+        const loginModal = document.getElementById('loginModal');
+        const closeBtn = document.getElementById('closeBtn');
+
+        loginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
