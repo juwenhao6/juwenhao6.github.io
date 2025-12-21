@@ -15,9 +15,9 @@
 
         html, body {
             height: 100%;
-            overflow-x: hidden; 
-            background-color: antiquewhite; 
-            perspective: 1000px; 
+            overflow-x: hidden; /* 仅禁止横向滚动 */
+            background-color: antiquewhite; /* 统一背景色 */
+            perspective: 1000px; /* 添加透视效果，增强3D感 */
         }
 
         body {
@@ -502,6 +502,137 @@
             z-index: 10;
         }
 
+        /* 智能推荐图书模块样式 - 统一风格 */
+        .recommended-books {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .recommended-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e74c3c;
+        }
+
+        .recommended-title {
+            font-size: 24px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .refresh-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .refresh-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .recommended-book-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .recommended-book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .book-card-img {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .book-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .recommended-book-card:hover .book-card-img img {
+            transform: scale(1.05);
+        }
+
+        .book-card-info {
+            padding: 15px;
+        }
+
+        .book-card-name {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .book-card-author {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .book-card-price {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .current-price {
+            font-size: 18px;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .original-price {
+            font-size: 14px;
+            color: #95a5a6;
+            text-decoration: line-through;
+            margin-left: 5px;
+        }
+
+        .card-add-cart {
+            color: #e74c3c;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .card-add-cart:hover {
+            color: #c0392b;
+        }
+
         .book-section {
             margin-top: 20px;
         }
@@ -656,7 +787,7 @@
         }
 
         .form-section {
-            margin-top: 30px;
+            margin-top: 20px;
             background-color: #fff;
             border-radius: 8px;
             padding: 20px;
@@ -949,6 +1080,13 @@
                 height: 18px;
                 font-size: 10px;
             }
+            /* 推荐模块响应式 */
+            .books-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            .book-card-img {
+                height: 200px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -989,6 +1127,15 @@
             }
             .circle-books-title {
                 font-size: 18px;
+            }
+            /* 推荐模块移动端适配 */
+            .recommended-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .books-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -1116,6 +1263,20 @@
                         <div class="circle-book-item">
                             <img src="https://img9.doubanio.com/view/subject/s/public/s3490411.jpg" alt="今日简史">
                         </div>
+                    </div>
+                </div>
+
+                <!-- 智能推荐图书模块 - 融合到页面中 -->
+                <div class="recommended-books">
+                    <div class="recommended-header">
+                        <h2 class="recommended-title">为你推荐</h2>
+                        <button class="refresh-btn" id="refreshBooksBtn">
+                            <i class="fa fa-refresh"></i>
+                            换一批
+                        </button>
+                    </div>
+                    <div class="books-grid" id="recommendedBooksGrid">
+                        <!-- JS自动生成 -->
                     </div>
                 </div>
                 
@@ -1409,6 +1570,131 @@
         floatingCart.addEventListener('click', () => {
             // 这里可以添加跳转到购物车页面或显示购物车弹窗的逻辑
             alert('购物车功能即将上线！');
+        });
+
+        // 智能推荐图书模块逻辑
+        const booksLibrary = [
+            {
+                id: 1,
+                name: '《百年孤独》',
+                author: '加西亚·马尔克斯',
+                price: 39.90,
+                originalPrice: 59.80,
+                image: 'https://picsum.photos/id/24/300/400' // 无防盗链图片
+            },
+            {
+                id: 2,
+                name: '《活着》',
+                author: '余华',
+                price: 22.50,
+                originalPrice: 35.00,
+                image: 'https://picsum.photos/id/25/300/400'
+            },
+            {
+                id: 3,
+                name: '《三体全集》',
+                author: '刘慈欣',
+                price: 89.00,
+                originalPrice: 128.00,
+                image: 'https://picsum.photos/id/26/300/400'
+            },
+            {
+                id: 4,
+                name: '《解忧杂货店》',
+                author: '东野圭吾',
+                price: 29.50,
+                originalPrice: 39.50,
+                image: 'https://picsum.photos/id/27/300/400'
+            },
+            {
+                id: 5,
+                name: '《白夜行》',
+                author: '东野圭吾',
+                price: 32.00,
+                originalPrice: 45.00,
+                image: 'https://picsum.photos/id/28/300/400'
+            },
+            {
+                id: 6,
+                name: '《小王子》',
+                author: '安托万·德·圣-埃克苏佩里',
+                price: 19.80,
+                originalPrice: 29.80,
+                image: 'https://picsum.photos/id/29/300/400'
+            },
+            {
+                id: 7,
+                name: '《追风筝的人》',
+                author: '卡勒德·胡赛尼',
+                price: 26.80,
+                originalPrice: 36.00,
+                image: 'https://picsum.photos/id/30/300/400'
+            },
+            {
+                id: 8,
+                name: '《红楼梦》',
+                author: '曹雪芹',
+                price: 49.90,
+                originalPrice: 78.00,
+                image: 'https://picsum.photos/id/31/300/400'
+            },
+            {
+                id: 9,
+                name: '《人类简史》',
+                author: '尤瓦尔·赫拉利',
+                price: 45.00,
+                originalPrice: 68.00,
+                image: 'https://picsum.photos/id/32/300/400'
+            },
+            {
+                id: 10,
+                name: '《明朝那些事儿》',
+                author: '当年明月',
+                price: 88.00,
+                originalPrice: 128.00,
+                image: 'https://picsum.photos/id/33/300/400'
+            }
+        ];
+
+        // 随机获取图书函数
+        function getRandomBooks(count = 5) {
+            const shuffled = [...booksLibrary].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
+        // 渲染图书卡片函数
+        function renderBooks(books) {
+            const grid = document.getElementById('recommendedBooksGrid');
+            grid.innerHTML = ''; // 清空容器
+            books.forEach(book => {
+                const card = document.createElement('div');
+                card.className = 'recommended-book-card';
+                card.innerHTML = `
+                    <div class="book-card-img">
+                        <img src="${book.image}" alt="${book.name}" onerror="this.src='https://picsum.photos/300/400'">
+                    </div>
+                    <div class="book-card-info">
+                        <h3 class="book-card-name">${book.name}</h3>
+                        <p class="book-card-author"><i class="fa fa-pencil"></i>${book.author}</p>
+                        <div class="book-card-price">
+                            <div>
+                                <span class="current-price">¥${book.price.toFixed(2)}</span>
+                                <span class="original-price">¥${book.originalPrice.toFixed(2)}</span>
+                            </div>
+                            <span class="card-add-cart"><i class="fa fa-shopping-cart"></i> 加入购物车</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // 页面加载时初始化推荐图书
+        document.addEventListener('DOMContentLoaded', () => {
+            renderBooks(getRandomBooks(5));
+            document.getElementById('refreshBooksBtn').addEventListener('click', () => {
+                renderBooks(getRandomBooks(5));
+            });
         });
     </script>
 </body>
