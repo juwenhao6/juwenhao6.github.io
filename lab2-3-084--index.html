@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>图书商城</title>
+    <style>
+        /* 全局重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        body {
+            padding-top: 70px;
+            background: #f5f5f5;
+        }
+
+        /* 头部：固定定位 + 浮动 */
+        .header {
+            width: 100%;
+            height: 60px;
+            background: #2c3e50;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            padding: 0 20px;
+            border-bottom: 3px solid #3498db;
+        }
+        .logo {
+            float: left;
+            font-size: 24px;
+            line-height: 60px;
+            margin-right: 40px;
+        }
+        .nav {
+            list-style: none;
+            float: left;
+        }
+        .nav li {
+            float: left;
+            margin-left: 20px;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            line-height: 60px;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+        .nav a:hover {
+            background: #3498db;
+        }
+
+        /* 主体三栏浮动布局 */
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        /* 左侧栏：相对定位 */
+        .left {
+            width: 200px;
+            float: left;
+            background: white;
+            padding: 15px;
+            border: 1px solid #ddd;
+            position: relative;
+            left: 0;
+            top: 0;
+        }
+        .left h2 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        .category {
+            list-style: none;
+        }
+        .category li {
+            height: 35px;
+            line-height: 35px;
+            border-bottom: 1px dashed #eee;
+        }
+        .category a {
+            text-decoration: none;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* 中间内容区 */
+        .middle {
+            width: 760px;
+            float: left;
+            margin: 0 20px;
+            background: white;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+        .middle h2 {
+            font-size: 18px;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+            padding-left: 8px;
+        }
+
+        /* 图书展示：父相子绝 + 悬停效果 */
+        .book-show {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .book-item {
+            position: relative;
+        }
+        .book-tip {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: red;
+            color: white;
+            padding: 3px 8px;
+            font-size: 12px;
+            display: none;
+        }
+        .book-item:hover .book-tip {
+            display: block;
+            cursor: pointer;
+        }
+
+        /* 热门推荐：浮动 */
+        .hot-book {
+            margin-bottom: 20px;
+        }
+        .hot-item {
+            float: left;
+            margin-right: 15px;
+        }
+
+        /* 新书表格 */
+        .book-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        .book-table th, .book-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        .book-table th {
+            background: #f8f8f8;
+        }
+
+        /* 右侧栏：固定定位 */
+        .right {
+            width: 200px;
+            float: left;
+            background: #fff3cd;
+            padding: 15px;
+            border: 1px solid #ffc107;
+            position: fixed;
+            right: calc((100% - 1200px)/2);
+            top: 80px;
+        }
+        .right h3 {
+            margin-bottom: 10px;
+            color: #d9534f;
+        }
+        .right p {
+            line-height: 2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 头部：固定定位 + 浮动 -->
+<header class="header">
+    <div class="logo">图书商城</div>
+    <ul class="nav">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">文学</a></li>
+        <li><a href="#">科技</a></li>
+        <li><a href="#">教育</a></li>
+        <li><a href="#">生活</a></li>
+    </ul>
+</header>
+
+<!-- 主体容器 -->
+<div class="container clearfix">
+    <!-- 左侧栏：相对定位 -->
+    <aside class="left">
+        <h2>图书分类</h2>
+        <ul class="category">
+            <li><a href="#">小说文学</a></li>
+            <li><a href="#">计算机</a></li>
+            <li><a href="#">经济管理</a></li>
+            <li><a href="#">少儿读物</a></li>
+            <li><a href="#">考试考证</a></li>
+        </ul>
+    </aside>
+
+    <!-- 中间内容区 -->
+    <section class="middle">
+        <h2>热门图书</h2>
+        <div class="book-show">
+            <div class="book-item">
+                <img src="https://picsum.photos/id/24/150/200" alt="图书封面">
+                <div class="book-tip">限时特价</div>
+            </div>
+            <div class="book-item"><img src="https://picsum.photos/id/25/150/200" alt="图书封面"></div>
+            <div class="book-item"><img src="https://picsum.photos/id/26/150/200" alt="图书封面"></div>
+        </div>
+
+        <h2>热门推荐</h2>
+        <div class="hot-book clearfix">
+            <div class="hot-item"><img src="https://picsum.photos/id/42/120/160" alt="推荐图书"></div>
+            <div class="hot-item"><img src="https://picsum.photos/id/43/120/160" alt="推荐图书"></div>
+            <div class="hot-item"><img src="https://picsum.photos/id/44/120/160" alt="推荐图书"></div>
+        </div>
+
+        <h2>新书上市</h2>
+        <table class="book-table">
+            <tr>
+                <th>书名</th>
+                <th>作者</th>
+                <th>价格</th>
+            </tr>
+            <tr>
+                <td>HTML从入门到精通</td>
+                <td>张三</td>
+                <td>59元</td>
+            </tr>
+            <tr>
+                <td>CSS设计模式</td>
+                <td>李四</td>
+                <td>49元</td>
+            </tr>
+            <tr>
+                <td>JavaScript权威指南</td>
+                <td>王五</td>
+                <td>129元</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- 右侧广告：固定定位 -->
+    <aside class="right">
+        <h3>促销广告</h3>
+        <p>满100减20</p>
+        <p>新用户首单5折</p>
+        <p>会员免费包邮</p>
+    </aside>
+</div>
+
+</body>
+</html>
