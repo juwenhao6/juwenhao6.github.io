@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>lab3-XX班-XXX-index.html</title>
+<title>lab2-XX班-XXX-index.html</title>
 <style>
 * {margin:0;padding:0;box-sizing:border-box;}
 ul,ol {list-style:none;}
@@ -41,19 +41,6 @@ body {background-color:#f5f7fa;font-family:"Microsoft Yahei",sans-serif;}
 .right-sidebar .promo-item:last-child {border:none;}
 .right-sidebar .promo-item h4 {color:#e74c3c;margin-bottom:5px;}
 .right-sidebar .promo-item p {font-size:14px;color:#666;}
-/* 登录弹窗样式（父相子绝） */
-.login-dialog {display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;}
-.login-box {position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:360px;background:#fff;border-radius:8px;padding:30px;box-shadow:0 0 20px rgba(0,0,0,0.2);}
-.login-box h2 {text-align:center;margin-bottom:20px;}
-.form-group {margin-bottom:15px;}
-.form-group label {display:block;margin-bottom:5px;color:#333;}
-.form-group input {width:100%;padding:10px;border:1px solid #ddd;border-radius:4px;}
-.btn {width:100%;padding:10px;border:none;border-radius:4px;background:#007bff;color:#fff;cursor:pointer;font-size:16px;}
-.btn:hover {background:#0056b3;}
-.switch-btn {text-align:center;margin-top:15px;color:#007bff;cursor:pointer;}
-.register-form {display:none;}
-.close-btn {position:absolute;top:10px;right:15px;font-size:20px;color:#999;cursor:pointer;}
-.user-info {display:none;float:right;height:50px;line-height:50px;padding-right:20px;}
 </style>
 </head>
 <body>
@@ -67,8 +54,7 @@ body {background-color:#f5f7fa;font-family:"Microsoft Yahei",sans-serif;}
 <li><a href="#">图书分类</a></li>
 <li><a href="#">新书上市</a></li>
 <li><a href="#">热门推荐</a></li>
-<li id="loginBtn"><a href="javascript:;">登录/注册</a></li>
-<li id="userInfo" class="user-info"></li>
+<li><a href="#">特价专区</a></li>
 </ul>
 </div>
 </div>
@@ -126,25 +112,25 @@ body {background-color:#f5f7fa;font-family:"Microsoft Yahei",sans-serif;}
 <div class="hot-recommend">
 <h3>🔥 热门推荐</h3>
 <div class="book-item">
-<img src="https://covers.openlibrary.org/b/isbn/9787536692930-M.jpg" alt="图书">
+<img src="https://img.alicdn.com/imgextra/i2/120483544/O1CN01TB2P2r1c3CmQHIvqc_!!120483544.jpg_q50.jpg_.webp" alt="图书">
 <p>《三体》全集</p>
 <p class="price">¥68.00</p>
 <div class="hidden-info">限时8折优惠</div>
 </div>
 <div class="book-item">
-<img src="https://covers.openlibrary.org/b/isbn/9787115379320-M.jpg" alt="图书">
+<img src="https://img.alicdn.com/imgextra/i1/2208377286554/O1CN01MTlTRX1yHmZ7a4QYy_!!2208377286554.jpg_q50.jpg_.webp" alt="图书">
 <p>《JavaScript高级程序设计》</p>
 <p class="price">¥79.00</p>
 <div class="hidden-info">买一送书签</div>
 </div>
 <div class="book-item">
-<img src="https://covers.openlibrary.org/b/isbn/9787508647357-M.jpg" alt="图书">
+<img src="https://img.alicdn.com/imgextra/i1/2776335350/O1CN01x2AsJu1pOLldy00Ty_!!2776335350.jpg_q50.jpg_.webp" alt="图书">
 <p>《人类简史》</p>
 <p class="price">¥58.00</p>
 <div class="hidden-info">满减可用</div>
 </div>
 <div class="book-item">
-<img src="https://covers.openlibrary.org/b/isbn/9787115460288-M.jpg" alt="图书">
+<img src="https://img.alicdn.com/imgextra/i4/2220158206890/O1CN01D7CL2x20lfyUB8KDs_!!2220158206890.jpg_q50.jpg_.webp" alt="图书">
 <p>《Python编程：从入门到实践》</p>
 <p class="price">¥69.00</p>
 <div class="hidden-info">赠配套视频</div>
@@ -198,106 +184,5 @@ body {background-color:#f5f7fa;font-family:"Microsoft Yahei",sans-serif;}
 </div>
 <div class="clearfix"></div>
 </div>
-<!-- 登录/注册弹窗 -->
-<div class="login-dialog" id="loginDialog">
-<div class="login-box">
-<span class="close-btn" id="closeBtn">&times;</span>
-<div class="login-form" id="loginForm">
-<h2>登录</h2>
-<div class="form-group">
-<label>用户名</label>
-<input type="text" id="loginUsername" placeholder="请输入用户名">
-</div>
-<div class="form-group">
-<label>密码</label>
-<input type="password" id="loginPwd" placeholder="请输入密码">
-</div>
-<button class="btn" id="loginSubmit">登录</button>
-<div class="switch-btn" id="toRegister">没有账号？去注册</div>
-</div>
-<div class="register-form" id="registerForm">
-<h2>注册</h2>
-<div class="form-group">
-<label>用户名</label>
-<input type="text" id="regUsername" placeholder="请输入用户名">
-</div>
-<div class="form-group">
-<label>密码</label>
-<input type="password" id="regPwd" placeholder="请输入密码">
-</div>
-<button class="btn" id="registerSubmit">注册</button>
-<div class="switch-btn" id="toLogin">已有账号？去登录</div>
-</div>
-</div>
-</div>
-<script>
-// 登录弹窗控制
-var loginBtn = document.getElementById('loginBtn');
-var loginDialog = document.getElementById('loginDialog');
-var closeBtn = document.getElementById('closeBtn');
-var loginForm = document.getElementById('loginForm');
-var registerForm = document.getElementById('registerForm');
-var toRegister = document.getElementById('toRegister');
-var toLogin = document.getElementById('toLogin');
-var loginSubmit = document.getElementById('loginSubmit');
-var registerSubmit = document.getElementById('registerSubmit');
-var userInfo = document.getElementById('userInfo');
-loginBtn.onclick = function(){
-loginDialog.style.display = 'block';
-loginForm.style.display = 'block';
-registerForm.style.display = 'none';
-}
-closeBtn.onclick = function(){
-loginDialog.style.display = 'none';
-}
-toRegister.onclick = function(){
-loginForm.style.display = 'none';
-registerForm.style.display = 'block';
-}
-toLogin.onclick = function(){
-registerForm.style.display = 'none';
-loginForm.style.display = 'block';
-}
-// 注册功能：写入localStorage
-registerSubmit.onclick = function(){
-var username = document.getElementById('regUsername').value.trim();
-var pwd = document.getElementById('regPwd').value.trim();
-if(!username || !pwd){
-alert('用户名和密码不能为空');
-return;
-}
-var users = JSON.parse(localStorage.getItem('users') || '[]');
-var exists = users.some(function(u){return u.username === username;});
-if(exists){
-alert('用户名已存在');
-return;
-}
-users.push({username:username,password:pwd});
-localStorage.setItem('users',JSON.stringify(users));
-alert('注册成功，请登录');
-registerForm.style.display = 'none';
-loginForm.style.display = 'block';
-}
-// 登录功能：和localStorage比对
-loginSubmit.onclick = function(){
-var username = document.getElementById('loginUsername').value.trim();
-var pwd = document.getElementById('loginPwd').value.trim();
-if(!username || !pwd){
-alert('用户名和密码不能为空');
-return;
-}
-var users = JSON.parse(localStorage.getItem('users') || '[]');
-var found = users.find(function(u){return u.username === username && u.password === pwd;});
-if(found){
-alert('登录成功');
-loginDialog.style.display = 'none';
-userInfo.style.display = 'block';
-userInfo.innerHTML = '欢迎你，' + username;
-document.getElementById('loginBtn').style.display = 'none';
-} else {
-alert('用户名或密码错误');
-}
-}
-</script>
 </body>
 </html>
